@@ -1,6 +1,8 @@
 package com.leetcode.fix.list;
 
-
+/*
+* number 1
+* */
 public class Leetcode143 {
 
     public static void main(String[] args){
