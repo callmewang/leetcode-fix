@@ -1,5 +1,8 @@
 package com.leetcode.fix.arrray;
 
+import org.assertj.core.util.Sets;
+
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,26 +11,28 @@ import java.util.Set;
 * */
 public class Leetcode128 {
 
+    public static void main(String[] args) {
+        int[] a = {100, 4, 200, 1, 3, 2,10,5,9,8};
+        System.out.println(longestConsecutive(a));
+    }
 
-    public int longestConsecutive(int[] nums) {
-        Set<Integer> numsSet = new HashSet<>();
+
+    public static int longestConsecutive(int[] nums) {
+        Set<Integer> number = new HashSet<>();
         for (Integer num : nums) {
-            numsSet.add(num);
+            number.add(num);
         }
         int longest = 0;
         for (Integer num : nums) {
-            if (numsSet.remove(num)) {
-                // 向当前元素的左边搜索,eg: 当前为100, 搜索：99，98，97,...
-                int currentLongest = 1;
-                int current = num;
-                while (numsSet.remove(current - 1)) current--;
-                currentLongest += (num - current);
-                // 向当前元素的右边搜索,eg: 当前为100, 搜索：101，102，103,...
-                current = num;
-                while(numsSet.remove(current + 1)) current++;
-                currentLongest += (current - num);
-                // 搜索完后更新longest.
-                longest = Math.max(longest, currentLongest);
+            if (number.remove(num)) {
+                int subLength = 1;
+                int temp = num;
+                while(number.remove(temp-1))temp--;
+                subLength += (num - temp);
+                temp = num;
+                while(number.remove(temp+1))temp++;
+                subLength+= (temp - num);
+                longest = Math.max(longest,subLength);
             }
         }
         return longest;
