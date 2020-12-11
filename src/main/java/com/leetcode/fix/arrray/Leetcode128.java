@@ -1,6 +1,5 @@
 package com.leetcode.fix.arrray;
 
-import org.assertj.core.util.Sets;
 
 import java.util.Arrays;
 import java.util.HashSet;

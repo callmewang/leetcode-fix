@@ -32,15 +32,7 @@ public class SwapNode {
         }
     }
 
-//    private static ListNodeSwap swapNode(ListNodeSwap head) {
-//        if(head == null || head.next == null){
-//            return head;
-//        }
-//        ListNodeSwap next = head.next;
-//        head.next = swapNode(next.next);
-//        next.next = head;
-//        return next;
-//    }
+
 
 
     public static ListNodeSwap swap(ListNodeSwap head){
