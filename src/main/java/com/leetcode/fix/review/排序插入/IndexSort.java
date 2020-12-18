@@ -28,7 +28,7 @@ public class IndexSort {
         for (int i = 1;i < array.length; i++) {
             int leftIndex = i-1;
             int temp = array[i];
-            while (leftIndex >= 0 && array[leftIndex] > temp) {
+            while (leftIndex >= 0 && array[leftIndex] > temp ) {
                 array[leftIndex+1] = array[leftIndex];
                 leftIndex--;
             }
