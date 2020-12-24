@@ -4,23 +4,18 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class SwapPrint {
 
-    static AtomicInteger ato = new AtomicInteger(0);
-    public static volatile boolean flag = true;
+    static volatile int t = 0;
     static Object obj = new Object();
 
     static class Thread1 extends Thread{
         @Override
         public void run() {
             synchronized (obj) {
-                while (flag) {
-                    int t = ato.getAndIncrement();
-                    if (t == 101) {
-                        flag = false;
-                        break;
-                    }
+                while (t <= 100) {
                     if (t%2==0) {
                         System.out.println("SwapPrint1===>" + t);
                         obj.notify();
+                        t++;
                     }
                     try {
                         obj.wait();
@@ -38,15 +33,11 @@ public class SwapPrint {
         @Override
         public void run() {
             synchronized (obj) {
-                while (flag) {
-                    int t = ato.getAndIncrement();
-                    if (t == 101) {
-                        flag = false;
-                        break;
-                    }
+                while (t<=100) {
                     if (t%2==1) {
                         System.out.println("SwapPrint2===>" + t);
                         obj.notify();
+                        t++;
                     }
                     try {
                         obj.wait();

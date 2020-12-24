@@ -33,7 +33,7 @@ public class TreeLevelScan {
         TreeNodeLevel rr2 = new TreeNodeLevel(7);
         r1.left = rl2;
         r1.right = rr2;
-        List<List<Integer>> rest = levelScan(root);
+        List<Integer> rest = rightSideView(root);
         rest.stream().forEach(e -> {
             System.out.println(e);
         });
@@ -67,4 +67,55 @@ public class TreeLevelScan {
         System.out.println(last);
         return rest;
     }
+
+    public List<List<Integer>> leveScan(TreeLevelScan root) {
+        List<List<Integer>> rest = new ArrayList<>();
+
+        Queue<TreeNodeLevel> queue = new LinkedList<>();
+        while (!queue.isEmpty()) {
+            int count = queue.size();
+            List<Integer> r = new ArrayList<>();
+            while (count > 0) {
+                TreeNodeLevel node = queue.poll();
+                r.add(node.value);
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+                count--;
+            }
+            rest.add(r);
+        }
+        return rest;
+
+    }
+
+    public static List<Integer> rightSideView(TreeNodeLevel root) {
+
+        List<Integer> rest = new ArrayList<>();
+        if(root == null) return new ArrayList<>();
+        Queue<TreeNodeLevel> queue = new LinkedList<>();
+        while (!queue.isEmpty()) {
+            int count = queue.size();
+            List<Integer> r = new ArrayList<>();
+            while (count > 0) {
+                TreeNodeLevel node = queue.poll();
+                r.add(node.value);
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+                count--;
+            }
+            rest.add(r.get(r.size()));
+
+        }
+        return rest;
+
+    }
+
 }
