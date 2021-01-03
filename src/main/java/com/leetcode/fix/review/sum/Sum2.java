@@ -10,6 +10,7 @@ public class Sum2 {
         int[] array = {1,4,2,6,9,2,10,7};
 
         List<List<Integer>> rest = target(array,8);
+        rest.stream().forEach(System.out::println);
 
     }
 

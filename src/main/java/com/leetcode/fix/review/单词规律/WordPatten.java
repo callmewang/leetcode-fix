@@ -5,6 +5,7 @@ import java.util.*;
 public class WordPatten {
 
 
+    //TODO
     public static void main(String[] args) {
 
         System.out.println(wordPattern("abba","dog cat cat dog"));

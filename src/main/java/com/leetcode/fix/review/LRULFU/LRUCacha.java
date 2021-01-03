@@ -1,4 +1,4 @@
-package com.leetcode.fix.review;
+package com.leetcode.fix.review.LRULFU;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
