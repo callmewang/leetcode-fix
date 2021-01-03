@@ -1,8 +1,5 @@
 package com.leetcode.fix.review.LRULFU;
 
-import com.sun.jmx.snmp.Timestamp;
-
-import javax.xml.soap.Node;
 import java.util.*;
 
 public class LFU<K,V> {
@@ -77,7 +74,7 @@ public class LFU<K,V> {
         LFUNode min = Collections.min(values);
         return (K)min.k;
     }
-    
+
     public V get(K k){
         if (data.containsKey(k)){
             LFUNode node = data.get(k);
