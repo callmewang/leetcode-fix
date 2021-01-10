@@ -73,8 +73,26 @@ public class RemoveMultiNode {
                 pre = cur;
             }
         }
-
-
         return rest.next;
+    }
+
+    private static ListNodeMulti removeDump2(ListNodeMulti head) {
+        ListNodeMulti dumy = new ListNodeMulti(0);
+        dumy.next = head;
+        ListNodeMulti pre = dumy;
+        while (pre.next != null) {
+            ListNodeMulti current = pre.next;
+            if (current.next != null && current.next.next == current.next) {
+                while (current.next != null && current.next.next == current.next) {
+                    current = current.next;
+                }
+                current = current.next;
+                pre.next = current;
+            } else {
+                pre = current;
+            }
+        }
+        return dumy.next;
+
     }
 }

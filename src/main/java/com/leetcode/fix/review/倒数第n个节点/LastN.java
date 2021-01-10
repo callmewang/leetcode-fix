@@ -42,6 +42,18 @@ public class LastN {
 
         System.out.println(p2.value);
 
+    }
+    private static ListNodeN lastN2(ListNodeN head,int n) {
+        ListNodeN p1 = head;
+        ListNodeN p2 = head;
+        for (int i = 0;i<n;i++) {
+            p1 = p1.next;
+        }
+        while (p1 != null) {
+            p1 = p1.next;
+            p2 = p2.next;
+        }
 
+        return p2;
     }
 }

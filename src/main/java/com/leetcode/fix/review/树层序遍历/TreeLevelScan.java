@@ -118,4 +118,33 @@ public class TreeLevelScan {
 
     }
 
+
+    public List<List<Integer>> levelScan2(TreeNodeLevel root){
+        List<List<Integer>> rest = new ArrayList<>();
+        if (root == null ) return rest;
+
+        Queue<TreeNodeLevel> q = new LinkedList();
+        q.add(root);
+        while (!q.isEmpty()) {
+            List<Integer> line = new ArrayList<>();
+            int count = q.size();
+            while (count > 0) {
+                TreeNodeLevel node = q.poll();
+                line.add(node.value);
+                if (node.left != null) {
+                    q.add(node.left);
+
+                }
+                if (node.right != null) {
+                    q.add(node.right);
+                }
+                count--;
+            }
+            rest.add(line);
+        }
+
+
+        return rest;
+    }
+
 }

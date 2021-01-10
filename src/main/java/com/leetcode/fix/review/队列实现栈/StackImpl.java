@@ -38,4 +38,18 @@ public class StackImpl {
         return s2.isEmpty() ? -1: s2.pop();
     }
 
+    public void  putV(int i){
+        s1.push(i);
+    }
+
+    public int getV(){
+        if (!s2.isEmpty()) return s2.pop();
+        while (!s1.isEmpty()) {
+            s2.push(s1.pop());
+        }
+
+        return s2.isEmpty() ? -1:s2.pop();
+
+    }
+
 }

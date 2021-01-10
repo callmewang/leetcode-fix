@@ -8,14 +8,15 @@ public class LRUSelf<K,V> {
     private Entry first;
     private Entry last;
 
+    private HashMap<K, Entry<K, V>> data = new HashMap<K, Entry<K, V>>();
+
+
     class Entry<K, V> {
         public Entry pre;
         public Entry next;
         public K key;
         public V value;
     }
-
-    private HashMap<K, Entry<K, V>> data = new HashMap<K, Entry<K, V>>();
 
     public void put(K key, V value) {
         Entry entry = getEntry(key);
@@ -38,17 +39,17 @@ public class LRUSelf<K,V> {
         moveToFirst(entry);
         return entry.value;
     }
-
-    public void remove(K key) {
-        Entry entry = getEntry(key);
-        if (entry != null) {
-            if (entry.pre != null) entry.pre.next = entry.next;
-            if (entry.next != null) entry.next.pre = entry.pre;
-            if (entry == first) first = entry.next;
-            if (entry == last) last = entry.pre;
-        }
-        data.remove(key);
-    }
+//
+//    public void remove(K key) {
+//        Entry entry = getEntry(key);
+//        if (entry != null) {
+//            if (entry.pre != null) entry.pre.next = entry.next;
+//            if (entry.next != null) entry.next.pre = entry.pre;
+//            if (entry == first) first = entry.next;
+//            if (entry == last) last = entry.pre;
+//        }
+//        data.remove(key);
+//    }
 
     private void moveToFirst(Entry entry) {
         if (entry == first) return;

@@ -5,8 +5,11 @@ import java.util.PriorityQueue;
 public class TopK {
 
     public static void main(String[] args) {
-//        PriorityQueue<Integer> pq = new PriorityQueue<>(5);//队列默认自然顺序排列，小顶堆，不必重写compare
         int[] temp = {1,3,2,70,19,6,2,9,6,90,9,4};
+        PriorityQueue<Integer> pq = new PriorityQueue<Integer>(5,(e1,e2)->{
+            return e2-e1;
+        });
+//        PriorityQueue<Integer> pq = new PriorityQueue<>(5);//队列默认自然顺序排列，小顶堆，不必重写compare
 //        for (int num : temp) {
 //            if (pq.size() < 5) {
 //                pq.offer(num);

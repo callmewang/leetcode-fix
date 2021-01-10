@@ -38,5 +38,19 @@ public class QueueImpl {
         return value;
     }
 
+    public void putV(int i){
+        q1.offer(1);
+    }
+
+    public int getV(){
+        while (q1.size() > 1) {
+            q2.offer(q1.poll());
+        }
+        int v = q1.poll();
+        while (q2.size() > 0) {
+            q1.offer(q2.poll());
+        }
+        return v;
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.leetcode.fix.review.最大不连续串;
 
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,6 +42,40 @@ public class MaxStr {
 
         return s.substring(subStart,subStart+maxLen);
     }
+
+    private static String maxStr2(String s) {
+        if (s == null || s.length() == 0) {
+            return null;
+        }
+        Map<Character,Integer> map = new HashMap<>();
+        int len = 0;
+        int start = 0;
+        int maxlen = 0;
+        int subStart = 0;
+
+
+        for (int i = 0;i<s.length();i++) {
+            char c = s.charAt(i);
+            if (map.containsKey(c)) {
+                int temp = map.get(c);
+                start = temp+1;
+                map = new HashMap<>();
+                len = 0;
+                i = temp;
+            } else {
+                map.put(c,i);
+                len++;
+                if (len > maxlen) {
+                    maxlen = len;
+                    subStart = start;
+                }
+            }
+
+        }
+        return s.substring(subStart,subStart+maxlen);
+    }
+
+
 
 
 }

@@ -78,5 +78,26 @@ public class QuickSort {
         qq(array,r+1,right);
     }
 
+    public static void qqq(int[] array,int left,int right){
+        if (left > right) return;
+        int l = left;
+        int r = right;
+        int target = array[l];
+        while (l < r) {
+            while (l<r && array[r] >= target) {
+                r--;
+            }
+            array[l] = array[r];
+
+            while (l<r && array[l] <= target) {
+                l++;
+            }
+            array[r] = array[l];
+
+        }
+        array[l] = target;
+        qqq(array,left,l-1);
+        qqq(array,r+1,right);
+    }
 
 }

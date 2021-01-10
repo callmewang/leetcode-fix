@@ -50,4 +50,16 @@ public class CommonAnces {
         return left==null? right:left;
     }
 
+    private static TreeNodeCommon common2(TreeNodeCommon root,
+                                         TreeNodeCommon p,
+                                         TreeNodeCommon q) {
+
+        if (root == null || root ==p || root==q) return root;
+
+        TreeNodeCommon left = common2(root.left,p,q);
+        TreeNodeCommon right = common2(root.right,p,q);
+        if (left != null && right!= null) return root;
+        return left==null?right:left;
+    }
+
 }

@@ -21,4 +21,17 @@ public class MidFind {
         }
         return 0;
     }
+
+    private static int midFind2(int[] array, int target) {
+        int l = 0;
+        int r = array.length-1;
+        while (l<r) {
+            int mid = (l+r-1) / 2;
+            if (array[mid] > target) r = mid-1;
+            if (array[mid] < target) l = mid+1;
+            if (array[mid] == target) return mid;
+        }
+        return 0;
+
+    }
 }

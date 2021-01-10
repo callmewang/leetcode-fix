@@ -26,4 +26,21 @@ public class ArrayMax2 {
         }
         return second;
     }
+
+    private static int second2(int[] target) {
+
+        int max = 0;
+        int second = 0;
+
+        for (int t : target) {
+            second = Math.max(second,t);
+            if (second > max) {
+                int temp =max;
+                max = second;
+                second = temp;
+            }
+        }
+
+        return second;
+    }
 }

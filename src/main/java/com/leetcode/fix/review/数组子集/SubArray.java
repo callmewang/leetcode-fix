@@ -27,4 +27,21 @@ public class SubArray {
         }
         return rest;
     }
+
+
+    private static List<List<Integer>> subArray2(int[] array) {
+
+        List<List<Integer>> rest = new ArrayList<>();
+        rest.add(new ArrayList<>());
+       for (int t : array) {
+           for (List<Integer> l : rest) {
+               List<Integer> record = new ArrayList<>(l);
+               record.add(t);
+               rest.add(record);
+           }
+       }
+        return rest;
+    }
+
+
 }

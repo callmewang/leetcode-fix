@@ -29,7 +29,7 @@ public class AllPath {
         TreeNodePath rr2 = new TreeNodePath(7);
         r1.left = rl2;
         r1.right = rr2;
-        printAllPath(null,new StringBuffer());
+        printAllPath(root,new StringBuffer());
         System.out.println(re );
     }
     static List<String> re = new ArrayList<>();

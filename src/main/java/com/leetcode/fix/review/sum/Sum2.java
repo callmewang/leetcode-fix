@@ -31,4 +31,23 @@ public class Sum2 {
         return rest;
     }
 
+    private static List<List<Integer>> target2(int[] array, int target) {
+        List<List<Integer>> rest = new ArrayList<>();
+        Map<Integer,Integer> map = new HashMap<>();
+
+        for (int i=0;i<array.length;i++) {
+            if (map.containsKey(array[i])) {
+                List<Integer> r = new ArrayList<>();
+                r.add(i);
+                r.add(map.get(array[i]));
+                rest.add(r);
+            } else {
+                map.put(target-array[i],i);
+            }
+        }
+
+        return rest;
+    }
+
+
 }

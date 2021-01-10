@@ -80,6 +80,20 @@ public class TreeNodeList {
                 s.push(node.left);
             }
         }
+    }
+
+    public void firstStack(TreeNodeF root){
+        Stack<TreeNodeF> s = new Stack<>();
+        s.push(root);
+        while (!s.isEmpty()) {
+            TreeNodeF node = s.pop();
+            if (node.right != null) {
+                s.push(node.right);
+            }
+            if (node.left != null) {
+                s.push(node.left);
+            }
+        }
 
     }
 
@@ -106,6 +120,25 @@ public class TreeNodeList {
             }
         }
     }
+
+    public void midStack(TreeNodeF root) {
+
+        Stack<TreeNodeF> s = new Stack<>();
+        if (root != null) {
+            while (root!= null || !s.isEmpty()) {
+                if (root!=null) {
+                    s.push(root);
+                    root = root.left;
+                } else {
+                    root = s.pop();
+                    root = root.right;
+                }
+            }
+        }
+
+    }
+
+
     private static void last(TreeNodeF root) {
         if (root == null) return;
         last(root.left);
@@ -129,5 +162,40 @@ public class TreeNodeList {
         }
     }
 
+    public void lastStack(TreeNodeF root) {
+        Stack<TreeNodeF> s = new Stack<>();
+        Set<TreeNodeF> seen = new HashSet<>();
+        while (root != null || !s.isEmpty()) {
+            if (root == null && seen.contains(root)) {
+                System.out.println("-----"+s.pop().value);
+            } else if (root == null) {
+                seen.add(s.peek());
+                root = s.peek().right;
+            } else {
+                s.push(root);
+                root = root.right;
+            }
+
+        }
+
+    }
+
+    public void lastStack2(TreeNodeF root) {
+       Stack<TreeNodeF> s = new Stack<>();
+       Set<TreeNodeF> seen = new HashSet<>();
+      while (root!=null || !s.isEmpty()) {
+          if (root == null && seen.contains(root)) {
+              System.out.println();
+          } else if (root == null) {
+              seen.add(s.peek());
+              root = s.peek().right;
+          }  else {
+              s.push(root);
+              root = root.left;
+          }
+
+      }
+
+    }
 
 }
